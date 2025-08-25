@@ -1,0 +1,39 @@
+﻿@model ASP_NET_Web_app.Controllers.PagedResult<ASP_NET_Web_app.Controllers.ProductListItemVm>
+@{
+    ViewBag.Title = "Products";
+}
+<h2>Products</h2>
+<p>@Html.ActionLink("Create New", "Create")</p>
+
+<table class="table">
+    <tr>
+        <th>ProductId</th>
+        <th>ProductName</th>
+        <th>CategoryId</th>
+        <th>CategoryName</th>
+    </tr>
+    @foreach (var p in Model.Items)
+    {
+        <tr>
+            <td>@p.ProductId</td>
+            <td>@p.ProductName</td>
+            <td>@p.CategoryId</td>
+            <td>@p.CategoryName</td>
+        </tr>
+    }
+</table>
+
+@if (Model.TotalPages > 1)
+{
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.TotalPages; i++)
+            {
+                var liClass = (i == Model.Page) ? "active" : "";
+                <li class="@liClass">
+                    @Html.ActionLink(i.ToString(), "Index", new { page = i, pageSize = Model.PageSize })
+                </li>
+            }
+        </ul>
+    </nav>
+}
