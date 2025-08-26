@@ -62,20 +62,17 @@ ASP-NET-Web-app/
 1. **Category Master**
    - Add, Edit, Delete, and View categories.  
    - Categories are stored in the database and used while creating products.
-
 2. **Product Master**
    - Add, Edit, Delete, and View products.  
    - Each product belongs to a category (foreign key relationship).  
    - Product creation form includes category selection (dropdown).
-
 3. **Product List**
    - Displays the following columns:
      - ProductId
      - ProductName
      - CategoryId
      - CategoryName
-
-### 4. Server-Side Pagination
+4. **Server-Side Pagination**
    - Pagination implemented on the product list view.  
    - Records are fetched from the database based on the current page and page size.  
    - Example: If page size = 10 and user is on page 9, only records **90–100** are pulled from the database.
