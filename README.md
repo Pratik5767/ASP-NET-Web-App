@@ -28,7 +28,7 @@ This project implements the given machine test requirements using **ASP.NET MVC 
 ---
 
 ## 📂 Project Structure
-```content
+```
 ASP-NET-Web-app/
 │
 ├── Controllers/
@@ -58,53 +58,47 @@ ASP-NET-Web-app/
 ```
 ---
 
-## Features
+## 🛠️Features
+1. **Category Master**
+   - Add, Edit, Delete, and View categories.  
+   - Categories are stored in the database and used while creating products.
 
-### 1. Category Master
-- Add, Edit, Delete, and View categories.  
-- Categories are stored in the database and used while creating products.
+2. **Product Master**
+   - Add, Edit, Delete, and View products.  
+   - Each product belongs to a category (foreign key relationship).  
+   - Product creation form includes category selection (dropdown).
 
-### 2. Product Master
-- Add, Edit, Delete, and View products.  
-- Each product belongs to a category (foreign key relationship).  
-- Product creation form includes category selection (dropdown).
-
-### 3. Product List
-- Displays the following columns:
-  - **ProductId**
-  - **ProductName**
-  - **CategoryId**
-  - **CategoryName**
+3. **Product List**
+   - Displays the following columns:
+     - ProductId
+     - ProductName
+     - CategoryId
+     - CategoryName
 
 ### 4. Server-Side Pagination
-- Pagination implemented on the product list view.  
-- Records are fetched from the database based on the current page and page size.  
-- Example: If page size = 10 and user is on page 9, only records **90–100** are pulled from the database.
+   - Pagination implemented on the product list view.  
+   - Records are fetched from the database based on the current page and page size.  
+   - Example: If page size = 10 and user is on page 9, only records **90–100** are pulled from the database.
 
 ---
 
 ## How to Run
 1. Clone this repository:
    ```bash
-   git clone <repo-url>
+   git clone https://github.com/Pratik5767/ASP-NET-Web-App.git
    ```
-
 2. Open the solution in Visual Studio.
-
 3. Update the connection string in Web.config with your SQL Server details.
-
 4. Run the following (for EF Code First):
    ```
    Update-Database
    ```
    This will create tables for Categories and Products.
-
 5. Press F5 to build and run the project.
 
 ---
 
 ## Expected Output
-
 - Category Master: Manage categories.
 - Product Master: Manage products linked with categories.
 - Product List: Displays product details with category names and pagination.
@@ -112,6 +106,5 @@ ASP-NET-Web-app/
 ---
 
 ## Notes
-
 - No scaffolding was used; all CRUD operations are implemented manually.
 - Pagination is fully server-side to ensure performance.
