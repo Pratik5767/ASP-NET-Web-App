@@ -14,16 +14,12 @@ namespace ASP_NET_Web_app.Controllers
     {
         private readonly AppDbContext _db = new AppDbContext();
 
-        // GET: /Product
-        // page starts from 1; pageSize default 10
         public ActionResult Index(int page = 1, int pageSize = 10)
         {
             if (page < 1) page = 1;
 
-            // Count first (cheap)
             var totalCount = _db.Products.Count();
 
-            // Only fetch the current page from DB
             var items = _db.Products
                            .OrderBy(p => p.ProductId)
                            .Include(p => p.Category)
@@ -49,14 +45,12 @@ namespace ASP_NET_Web_app.Controllers
             return View(vm);
         }
 
-        // GET: /Product/Create
         public ActionResult Create()
         {
             ViewBag.CategoryId = new SelectList(_db.Categories.OrderBy(c => c.CategoryName), "CategoryId", "CategoryName");
             return View(new Product());
         }
 
-        // POST: /Product/Create
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Create(Product model)
         {
@@ -70,7 +64,6 @@ namespace ASP_NET_Web_app.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: /Product/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,7 +73,6 @@ namespace ASP_NET_Web_app.Controllers
             return View(prod);
         }
 
-        // POST: /Product/Edit/5
         [HttpPost, ValidateAntiForgeryToken]
         public ActionResult Edit(Product model)
         {
@@ -94,7 +86,6 @@ namespace ASP_NET_Web_app.Controllers
             return RedirectToAction("Index");
         }
 
-        // GET: /Product/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -103,7 +94,6 @@ namespace ASP_NET_Web_app.Controllers
             return View(prod);
         }
 
-        // POST: /Product/Delete/5
         [HttpPost, ActionName("Delete"), ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
