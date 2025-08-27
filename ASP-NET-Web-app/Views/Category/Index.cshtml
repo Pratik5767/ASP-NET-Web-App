@@ -2,19 +2,39 @@
 @{
     ViewBag.Title = "Categories";
 }
-<h2>Categories</h2>
-<p>@Html.ActionLink("Create New", "Create")</p>
-<table class="table">
-    <tr><th>CategoryId</th><th>CategoryName</th><th></th></tr>
-    @foreach (var c in Model)
-    {
-        <tr>
-            <td>@c.CategoryId</td>
-            <td>@c.CategoryName</td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = c.CategoryId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = c.CategoryId })
-            </td>
-        </tr>
-    }
-</table>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h2 class="text-primary">
+            <i class="bi bi-folder2-open"></i> Categories
+        </h2>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-body p-0">
+            <table class="table table-striped table-hover mb-0">
+                <thead class="table-dark">
+                    <tr>
+                        <th>CategoryId</th>
+                        <th>CategoryName</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var c in Model)
+                    {
+                        <tr>
+                            <td>@c.CategoryId</td>
+                            <td>@c.CategoryName</td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { id = c.CategoryId }, new { @class = "btn btn-sm btn-warning me-2" })
+                                @Html.ActionLink("Delete", "Delete", new { id = c.CategoryId }, new { @class = "btn btn-sm btn-danger" })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

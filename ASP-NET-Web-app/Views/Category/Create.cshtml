@@ -2,15 +2,29 @@
 @{
     ViewBag.Title = "Create Category";
 }
-<h2>Create Category</h2>
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <div class="form-group">
-        @Html.LabelFor(m => m.CategoryName)
-        @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control" })
-        @Html.ValidationMessageFor(m => m.CategoryName)
+
+<div class="d-flex justify-content-center mt-5">
+    <div class="card shadow-lg p-4" style="width: 40%;">
+        <h3 class="text-center mb-4 text-primary">
+            <i class="bi bi-folder-plus"></i> Create Category
+        </h3>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="mb-3">
+                @Html.LabelFor(m => m.CategoryName, htmlAttributes: new { @class = "form-label fw-bold" })
+                @Html.TextBoxFor(m => m.CategoryName, new { @class = "form-control", placeholder = "Enter category name..." })
+                @Html.ValidationMessageFor(m => m.CategoryName, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="bi bi-save"></i> Save
+                </button>
+                @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-outline-secondary px-4" })
+            </div>
+        }
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
-    @Html.ActionLink("Back", "Index", null, new { @class = "btn btn-default" })
-}
+</div>
